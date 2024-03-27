@@ -1,0 +1,39 @@
+name: MD to PDF
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ubuntu
+        run: sudo apt-get update
+
+      - name: Install TeX dependencies
+        run: >
+          sudo apt-get install
+          pandoc
+          texlive-latex-base
+          texlive-fonts-recommended
+          texlive-fonts-extra
+          texlive-latex-extra
+
+      - name: MD to PDF with pandoc
+        run: |
+          for i in `find . -name "*.md" -type f`; do
+            pandoc "$i" -o "${i%.md}.pdf"
+          done
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ github.event.repository.name }}
+          path: |
+            **/*.pdf
