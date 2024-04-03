@@ -1,39 +1,37 @@
-name: MD to PDF
+name: CI
 
 on:
   workflow_dispatch:
   push:
   pull_request:
 
+env:
+  ROOT_TEX_FILE: proposal.tex
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    # https://stackoverflow.com/a/58142412/18479243
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout Git repository
         uses: actions/checkout@v4
 
-      - name: Set up Ubuntu
-        run: sudo apt-get update
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: ${{ env.ROOT_TEX_FILE }}
+          work_in_root_file_dir: true
 
-      - name: Install TeX dependencies
-        run: >
-          sudo apt-get install
-          pandoc
-          texlive-latex-base
-          texlive-fonts-recommended
-          texlive-fonts-extra
-          texlive-latex-extra
-
-      - name: MD to PDF with pandoc
+      - name: Get PDF name
         run: |
-          for i in `find . -name "*.md" -type f`; do
-            pandoc "$i" -o "${i%.md}.pdf"
-          done
+          ROOT_TEX_FILE=${{ env.ROOT_TEX_FILE }}
+          ROOT_TEX_FILE_NO_EXTENSION=${ROOT_TEX_FILE%.tex}
+          echo "OUTPUT_PDF=$(echo $ROOT_TEX_FILE_NO_EXTENSION.pdf)" >> $GITHUB_ENV
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: ${{ github.event.repository.name }}
           path: |
-            **/*.pdf
+            ${{ env.OUTPUT_PDF }}
