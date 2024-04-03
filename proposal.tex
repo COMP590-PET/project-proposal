@@ -1,26 +1,31 @@
 \documentclass{article}
-% 11-785 Project Proposal Template
-% https://www.overleaf.com/latex/templates/11-785-project-proposal-template/gvfmxtrwcttd
-\usepackage{11785_project,times}
-\usepackage{hyperref}
-\usepackage{url}
+\input{preamble}
 
-\title{COMP590-171 Project Proposal: Refraction Networking}
+\title{COMP590--171 Project Proposal: Refraction Networking}
 
-\author{
-    Dohhyun Kim, Harin Lim, Jesse Wei, Daniel Xie, Matseoi Zhou
-}
+\author{Dohhyun Kim, Harin Lim, Jesse Wei, Daniel Xie, Matseoi Zhou}
 
 \begin{document}
 
 \maketitle
 
-\begin{abstract}
-High level description and objective of your semester project here. When you find yourself in an elevator with Geoff Hinton, what will you tell him you worked on this semester?
-\end{abstract}
+\section{Refraction networking introduction}
 
-\section{Introduction}
-More detailed and overall description of your project, relevancy, and final goals. What you couldn't fit into your 30 second conversation with Geoff Hinton but wish you could have.
+Refraction networking (RN) is a scheme for evading censorship technology, such as website blacklists enforced by governments, with the help of an ISP partner. Specifically, in refraction networking (also called ``decoy routing''), the user requests a blocked site, but the RN protocol actually requests a reachable site with some encrypted header information. The censoring technology accepts the legitimate request, but the ISP partner reads the header information and ``refracts'' the request to the blocked site that the user originally requested.
+
+The specific protocol we will reimplement for our project is TapDance \cite{tapdance}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{refraction_networking}
+    % TODO: make this not show up as [ref]
+    % Note that adding author as "Refraction Network Team" makes the reference [team]
+    \caption{Refraction networking \cite{refraction_network}}
+\end{figure}
+
+\section{Reimplementation of TapDance}
+
+TODO
 
 \section{Proof of Concept}
 Now you are ready to begin the meat of your project, but you know that development will take some time. To avoid the nightmare scenario in which you spend most of your time working on an inherently flawed approach, you will need to find a toy problem or sub-problem to validate your approach(es) well before the deadline. It is also critical that the problem be simple enough such that the outcome is interpretable and the following questions (and others) can be answered:
