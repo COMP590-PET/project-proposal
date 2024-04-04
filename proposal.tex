@@ -27,25 +27,39 @@ The specific RN protocol we will reimplement for our project is TapDance \cite{t
 
 \section{Reimplementation of TapDance}
 
-\section{Member Roles}
+Our project is to reimplement the TapDance protocol. Specifically, we will simulate censoring a website and bypassing the filter via a client that uses TapDance to request the blocked website and a simulated ISP that refracts the request to the blocked website. We will run the client and server code on different machines with different IP addresses. Finally, we will test out some attacks against TapDance mentioned in the paper to check their viability.
 
-\begin{itemize}
-\item Dohhyun Kim - 
-\item Harin Lim - 
-\item Jesse Wei - 
-\item Daniel Xie - 
-\item Matseoi Zau - 
-\end{itemize}
+The above will be our artifacts (specifically, code for a TapDance client and server and a simulated ISP).
 
-\section{Project Timeline}
+\section{Schedule}
 
-\begin{itemize}
-\item 2024/04/04 - Submit Proposal 
-\item 2024/04/04 - Milestone 1 
-\item 2024/04/04 - Milestone 2  
-\item 2024/04/04 - Milestone 3  
-\item 2024/05/?? - Final Presentation 
-\end{itemize}
+\begin{center}
+\begin{tabular}{|c|c|}
+    \hline
+    Deadline & Task\\
+    \hline
+    4/10 & Client, server, ISP (simulated), and website censoring code \\
+    \hline
+    4/10 & TapDance cryptographic protocols (ECDH, Elligator 2 over Curve25519, etc.) \\
+    \hline
+    4/21 & TapDance server refraction\\
+    \hline
+    4/25 & Test attacks against TapDance\\
+    \hline
+    4/28 & Presentation\\
+    \hline
+    5/2 & Paper\\
+    \hline
+\end{tabular}
+\end{center}
+
+\section{Team member responsibilities}
+
+Daniel and Matseoi will work on the TapDance cryptographic protocols.
+
+Dohhyun, Harin, and Jesse will work on the client, server, and simulated ISP.
+
+After this is done, the entire team will work on experimenting with attacks against TapDance and writing the presentation and final report.
 
 \newpage
 \printbibliography
