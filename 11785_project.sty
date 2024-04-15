@@ -17,10 +17,10 @@
 %
 \usepackage{eso-pic} % used by \AddToShipoutPicture
 \RequirePackage{fancyhdr}
-\RequirePackage{natbib}
+% \RequirePackage{natbib}
 
 % modification to natbib citations
-\setcitestyle{authoryear,round,citesep={;},aysep={,},yysep={;}}
+% \setcitestyle{authoryear,round,citesep={;},aysep={,},yysep={;}}
 
 \renewcommand{\topfraction}{0.95}   % let figure take up nearly whole page
 \renewcommand{\textfraction}{0.05}  % let figure take up nearly whole page
@@ -71,7 +71,7 @@
 \endgroup
 \setcounter{footnote}{0}
 \let\maketitle\relax \let\@maketitle\relax
-\gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\thanks\relax}
+\gdef\@thanks{}\gdef\@author{}\gdef\@title{}\gdef\@date{}\let\thanks\relax}
 
 % The toptitlebar has been raised to top-justify the first page
 
@@ -91,6 +91,7 @@
   \def\AND{\end{tabular}\hfil\linebreak[4]\hfil
             \begin{tabular}[t]{l}\bf\rule{\z@}{24pt}\ignorespaces}%
     \begin{tabular}[t]{l}\bf\rule{\z@}{24pt}\@author\end{tabular}%
+    \begin{tabular}[t]{l}\bf\rule{\z@}{24pt}\@date\end{tabular}%
 \else
        \lhead{}
    \def\And{\end{tabular}\hfil\linebreak[0]\hfil
@@ -98,6 +99,7 @@
   \def\AND{\end{tabular}\hfil\linebreak[4]\hfil
             \begin{tabular}[t]{l}\bf\rule{\z@}{24pt}\ignorespaces}%
     \begin{tabular}[t]{l}\bf\rule{\z@}{24pt}\@author\end{tabular}%
+    \begin{tabular}[t]{l}\bf\rule{\z@}{24pt}\@date\end{tabular}%
 %     \begin{tabular}[t]{l}\bf\rule{\z@}{24pt}\ignorespaces
 %Anonymous Author(s) \\
 %Affiliation \\

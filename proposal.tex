@@ -5,15 +5,15 @@
 
 \author{Dohhyun Kim, Harin Lim, Jesse Wei, Daniel Xie, Matseoi Zau}
 
+\date{April 4, 2024}
+
 \begin{document}
 
 \maketitle
 
 \section{Refraction networking introduction}
 
-Refraction networking (RN) is a scheme for evading censorship technology, such as website blacklists enforced by governments, with the help of an ISP partner. Specifically, in refraction networking (also called ``decoy routing''), the user requests a blocked site, but the RN protocol actually requests a reachable site with some encrypted header information. The censoring technology accepts the legitimate request, but the ISP partner reads the header information and ``refracts'' the request to the blocked site that the user originally requested.
-
-The specific protocol we will reimplement for our project is TapDance \cite{tapdance}.
+Refraction networking (RN) is a scheme for evading censorship technology, such as website blacklists enforced by governments, with the help of an ISP partner. Specifically, in refraction networking (also called ``decoy routing''), the user requests a blocked site, but the RN protocol actually requests a reachable site with some encrypted header information. The censor accepts the request that seems to be legitimate, but the ISP partner reads the header information and ``refracts'' the request to the blocked site that the user originally requested.
 
 \begin{figure}[h]
     \centering
@@ -23,68 +23,45 @@ The specific protocol we will reimplement for our project is TapDance \cite{tapd
     \caption{Refraction networking \cite{refraction_network}}
 \end{figure}
 
+The specific RN protocol we will reimplement for our project is TapDance \cite{tapdance}.
+
 \section{Reimplementation of TapDance}
 
-TODO
+Our project is to reimplement the TapDance protocol. Specifically, we will simulate censoring a website and bypassing the filter via a client that uses TapDance to request the blocked website and a simulated ISP that refracts the request to the blocked website. We will run the client and server code on different machines with different IP addresses. Finally, we will test out some attacks against TapDance mentioned in the paper to check their viability.
 
-\section{Proof of Concept}
-Now you are ready to begin the meat of your project, but you know that development will take some time. To avoid the nightmare scenario in which you spend most of your time working on an inherently flawed approach, you will need to find a toy problem or sub-problem to validate your approach(es) well before the deadline. It is also critical that the problem be simple enough such that the outcome is interpretable and the following questions (and others) can be answered:
+The above will be our artifacts (specifically, code for a TapDance client and server, a simulated ISP, and attacks against TapDance).
 
-\textit{Is it failing because of a bug in our program or because of an issue with out approach? Why isn't this strategy performing as well as we hoped? Is there a reasonable adjustment we can make to do better? Do we need to pivot?}
+\section{Schedule}
 
-In this section, describe such a suitable problem and how you will evaluate the results. If applicable, list the different approaches you will be evaluating on this problem (e.g. you have two candidate algorithms for your project task).
+\begin{center}
+\begin{tabular}{|c|c|}
+    \hline
+    Deadline & Task\\
+    \hline
+    4/10 & Client, server, ISP (simulated), and website censoring code \\
+    \hline
+    4/10 & TapDance cryptographic protocols (ECDH, Elligator 2 over Curve25519, etc.) \\
+    \hline
+    4/21 & TapDance server refraction\\
+    \hline
+    4/25 & Test attacks against TapDance\\
+    \hline
+    4/28 & Presentation\\
+    \hline
+    5/2 & Paper\\
+    \hline
+\end{tabular}
+\end{center}
 
-\section{Experiments}
+\section{Team member responsibilities}
 
-After you successfully evaluate your approach(es) on a smaller problem, it's now showtime. How will you move beyond this small problem and adapt your technique for the ultimate challenge? What experiments do you plan to run? This section can be less developed and speak in terms of the results of earlier experiments. You should also more thoroughly describe the setup of these final experiments and how it relates to your end goal.
+Daniel and Matseoi will work on the TapDance cryptographic protocols.
 
-\section{Member Roles}
+Dohhyun, Harin, and Jesse will work on the client, server, and simulated ISP.
 
-\begin{itemize}
-\item Dohhyun Kim - 
-\item Harin Lim - 
-\item Jesse Wei - 
-\item Daniel Xie - 
-\item Matseoi Zau - 
-\end{itemize}
+After this is done, the entire team will work on experimenting with attacks against TapDance and writing the presentation and final report.
 
-
-\section{Project Timeline}
-
-\begin{itemize}
-\item 2024/04/04 - Submit Proposal 
-\item 2024/04/04 - Milestone 1 
-\item 2024/04/04 - Milestone 2  
-\item 2024/04/04 - Milestone 3  
-\item 2024/05/?? - Final Presentation 
-\end{itemize}
-\section{Final Goals \& Evaluation}
-
-This section should tie together the details of your experimental process and provide a metric for the successfully completed project.
-
-\begin{itemize}
-\item What do you hope to achieve by the end of the semester?
-\item How will you evaluate your experiments relative to these end goals?
-\item What quantitative measure are you measuring the success of your experiments by?
-\item Have you decomposed your final goal into sub-goals of varying difficulty? You might say, for example, "Result \textbf{A} should be achievable based on precedent and result \textbf{B} is more ambitious. We wish to work toward \textbf{B} and report achievement on \textbf{A} first."
-\end{itemize}
-
-\section{Related Work}
-
-Please cite blog posts, papers, projects, and other works you have consulted or plan to consult later. Please provide a sentence or two description that conveys the sources relevance to your project. You should have at least \textbf{5} sources.
-
-
-\section{Data \& Technical Requirements}
-
-Provide expected technical requirements and relevant datasets so the course staff can best support your project needs. What software libraries do you plan to use? What datasets are you using or need access to? Anything else we (the course staff) should know?
-
-% You should cite all sources mentioned in this proposal in the file 11785_project.bib
-% If you don't wish to cite some of your sources inline (e.g. in the Related Work section) using \cite{}, just you nocite to add
-% them to the references section at the end of your proposal like so.
-\nocite{Bengio+chapter2007}
-\nocite{Hinton06}
-
-\bibliography{refs}
-\bibliographystyle{11785_project}
+\newpage
+\printbibliography
 
 \end{document}
